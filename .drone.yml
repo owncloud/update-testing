@@ -106,5 +106,5 @@ matrix:
   DB_TYPE:
     - sqlite
     - mysql
-    - pgsql
-    - oci
+    - postgres
+    - oracle
