@@ -1,0 +1,110 @@
+workspace:
+  base: /drone
+  path: src
+
+branches:
+  - master
+
+clone:
+  git:
+    image: plugins/git:1
+    pull: true
+
+pipeline:
+  owncloud-download:
+    image: owncloudci/php:7.0
+    pull: true
+    commands:
+      - pwd
+      - rm -rf owncloud
+      - .drone/download.sh ${FROM} ${TO}
+      - tar -jxf owncloud-${FROM}.tar.bz2 -C /drone/src
+
+  install-from-version:
+    image: owncloudci/php:7.0
+    pull: true
+    commands:
+      - cd owncloud
+      - ../.drone/install-server.sh
+      - more config/config.pphp
+      - php -f cron.php
+      - php -f cron.php
+      - php ./occ app:disable activity
+      - php ./occ app:disable files_pdfviewer
+      - php ./occ app:disable files_texteditor
+      - php ./occ app:disable gallery
+      - php ./occ app:disable files_videoplayer
+      - php ./occ app:disable files_videoviewer
+      - php ./occ app:disable updater
+
+  upgrade-test:
+    image: owncloudci/php:7.1
+    pull: true
+    commands:
+      - cd owncloud
+      - ls | grep -v data | grep -v config | xargs rm -rf
+      - tar -jxf /drone/src/owncloud-${TO}.tar.bz2 -C /drone/src
+      - php ./occ up
+
+  run-phpunit:
+    image: owncloudci/php:7.1
+    pull: true
+    commands:
+      - cd owncloud
+      - php ./occ app:disable gallery
+      - chmod +x lib/composer/phpunit/phpunit/phpunit
+      - cd tests
+      - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml"
+
+  notify-rocketchat:
+    image: plugins/slack:1
+    pull: true
+    secrets: [ slack_webhook ]
+    channel: builds
+    when:
+      local: false
+      status: [ changed, failure ]
+
+services:
+  mysql:
+    image: mysql:5.5
+    environment:
+      - MYSQL_USER=owncloud
+      - MYSQL_PASSWORD=owncloud
+      - MYSQL_DATABASE=owncloud
+      - MYSQL_ROOT_PASSWORD=owncloud
+    when:
+      matrix:
+        DB_TYPE: mysql
+
+  postgres:
+    image: postgres:9.4
+    environment:
+      - POSTGRES_USER=owncloud
+      - POSTGRES_PASSWORD=owncloud
+      - POSTGRES_DB=owncloud
+    when:
+      matrix:
+        DB_TYPE: postgres
+
+  oracle:
+    image: deepdiver/docker-oracle-xe-11g
+    when:
+      matrix:
+        DB_TYPE: oracle
+
+
+matrix:
+  FROM:
+    - 8.2.11
+    - 9.0.9
+    - 9.1.5
+    - 10.0.4
+  TO:
+    - daily-stable10-qa
+    - daily-master-qa
+  DB_TYPE:
+    - sqlite
+    - mysql
+    - pgsql
+    - oci
