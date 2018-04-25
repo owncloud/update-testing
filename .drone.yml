@@ -23,6 +23,8 @@ pipeline:
   install-from-version:
     image: owncloudci/php:7.0
     pull: true
+    environment:
+      - DB_TYPE=${DB_TYPE}
     commands:
       - cd owncloud
       - ../.drone/install-server.sh

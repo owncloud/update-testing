@@ -96,10 +96,10 @@ case "${DB_TYPE}" in
     ;;
   oracle)
     wait-for-it oracle:1521
-    plugin_wait_for_oracle
     DB=oci
     DB_USERNAME=autotest
     DB_NAME='XE'
+    plugin_wait_for_oracle
     ;;
   sqlite)
     DB=sqlite
