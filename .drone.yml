@@ -72,7 +72,7 @@ pipeline:
 
 services:
   mysql:
-    image: mysql:5.5
+    image: ${MYSQL_IMAGE=mysql:5.5}
     environment:
       - MYSQL_USER=owncloud
       - MYSQL_PASSWORD=owncloud
@@ -97,7 +97,6 @@ services:
     when:
       matrix:
         DB_TYPE: oracle
-
 
 matrix:
   include:
@@ -202,3 +201,12 @@ matrix:
       TO: daily-master-qa
       DB_TYPE: postgres
       POSTGRES_IMAGE: postgres:10.3
+    - FROM: 8.2.11
+      TO: daily-master-qa
+      DB_TYPE: postgres
+      POSTGRES_IMAGE: postgres:10.4
+    - FROM: 8.2.11
+      TO: daily-master-qa
+      DB_TYPE: postgres
+      POSTGRES_IMAGE: postgres:11
+
