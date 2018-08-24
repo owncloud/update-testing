@@ -6,6 +6,23 @@ TO_VERSION=$2
 FROM=owncloud-$FROM_VERSION.tar.bz2
 TO=owncloud-$TO_VERSION.tar.bz2
 
+if [[ $TO_VERSION == git* ]]; then
+  GIT_BRANCH=`echo $TO_VERSION | cut -c 5-`
+  rm -f $TO
+  rm -rf g
+  mkdir g
+  cd g
+  git clone -b $GIT_BRANCH --recursive --depth 1 https://github.com/owncloud/core.git owncloud
+  cd owncloud
+  make
+  cd ..
+  rm -rf owncloud/.git
+  rm -rf owncloud/build
+  tar -cjf $TO owncloud
+  mv $TO ..
+  cd ..
+  rm -rf g
+fi
 
 if [ ! -f $FROM ]; then
   wget -nv http://download.owncloud.org/community/$FROM || true
