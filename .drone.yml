@@ -44,8 +44,10 @@ pipeline:
     pull: true
     commands:
       - cd owncloud
+      - cat version.php
       - ls | grep -v data | grep -v config | xargs rm -rf
       - tar -jxf /drone/src/owncloud-${TO}.tar.bz2 -C /drone/src
+      - cat version.php
       - php ./occ up
 
   run-phpunit:
