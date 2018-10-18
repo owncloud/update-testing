@@ -28,7 +28,7 @@ pipeline:
     commands:
       - cd owncloud
       - ../.drone/install-server.sh
-      - more config/config.pphp
+      - more config/config.php
       - php -f cron.php
       - php -f cron.php
       - php ./occ app:disable activity
@@ -38,6 +38,7 @@ pipeline:
       - php ./occ app:disable files_videoplayer
       - php ./occ app:disable files_videoviewer
       - php ./occ app:disable updater
+      - php ./occ app:list
 
   upgrade-test:
     image: owncloudci/php:7.1
@@ -48,7 +49,9 @@ pipeline:
       - ls | grep -v data | grep -v config | xargs rm -rf
       - tar -jxf /drone/src/owncloud-${TO}.tar.bz2 -C /drone/src
       - cat version.php
+      - php ./occ app:list
       - php ./occ up
+      - php ./occ app:list
 
   run-phpunit:
     image: owncloudci/php:7.1
