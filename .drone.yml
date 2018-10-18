@@ -63,6 +63,15 @@ pipeline:
       - cd tests
       - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml"
 
+  owncloud-log:
+    image: owncloud/ubuntu:16.04
+    detach: true
+    pull: true
+    commands:
+    - tail -f /drone/src/data/owncloud.log
+    when:
+      status: [ success, failure ]
+
   notify-rocketchat:
     image: plugins/slack:1
     pull: true
