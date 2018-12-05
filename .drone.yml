@@ -38,6 +38,7 @@ pipeline:
       - php ./occ app:disable files_videoplayer
       - php ./occ app:disable files_videoviewer
       - php ./occ app:disable updater
+      - php ./occ app:disable templateeditor
 
   upgrade-test:
     image: owncloudci/php:7.1
