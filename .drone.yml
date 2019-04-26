@@ -61,6 +61,21 @@ pipeline:
       - cd tests
       - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml"
 
+  fix-permissions:
+    image: owncloudci/php:7.1
+    pull: true
+    commands:
+      - chown www-data /drone/src -R
+
+  api-acceptance-tests:
+    image: owncloudci/php:7.1
+    pull: true
+    environment:
+      - TEST_SERVER_URL=https://server-https
+    commands:
+      - cd owncloud/tests/acceptance
+      - bash run.sh --remote --tags "@smokeTest" --type api
+
   notify-rocketchat:
     image: plugins/slack:1
     pull: true
@@ -97,6 +112,17 @@ services:
     when:
       matrix:
         DB_TYPE: oracle
+
+  server-https:
+    image: owncloudci/php:7.1
+    pull: true
+    environment:
+      - APACHE_WEBROOT=/drone/src/owncloud
+      - APACHE_CONFIG_TEMPLATE=ssl
+      - APACHE_SSL_CERT_CN=server-${SERVER_PROTOCOL}
+      - APACHE_SSL_CERT=/drone/server.crt
+      - APACHE_SSL_KEY=/drone/server.key
+    command: [ "/usr/local/bin/apachectl", "-e", "debug" , "-D", "FOREGROUND" ]
 
 matrix:
   include:
