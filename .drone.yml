@@ -196,6 +196,54 @@ matrix:
     - FROM: 10.0.4
       TO: daily-master-qa
       DB_TYPE: oracle
+    - FROM: 10.0.10
+      TO: daily-stable10-qa
+      DB_TYPE: sqlite
+    - FROM: 10.0.10
+      TO: daily-stable10-qa
+      DB_TYPE: mysql
+    - FROM: 10.0.10
+      TO: daily-stable10-qa
+      DB_TYPE: postgres
+    - FROM: 10.0.10
+      TO: daily-stable10-qa
+      DB_TYPE: oracle
+    - FROM: 10.0.10
+      TO: daily-master-qa
+      DB_TYPE: sqlite
+    - FROM: 10.0.10
+      TO: daily-master-qa
+      DB_TYPE: mysql
+    - FROM: 10.0.10
+      TO: daily-master-qa
+      DB_TYPE: postgres
+    - FROM: 10.0.10
+      TO: daily-master-qa
+      DB_TYPE: oracle
+    - FROM: 10.1.0
+      TO: daily-stable10-qa
+      DB_TYPE: sqlite
+    - FROM: 10.1.0
+      TO: daily-stable10-qa
+      DB_TYPE: mysql
+    - FROM: 10.1.0
+      TO: daily-stable10-qa
+      DB_TYPE: postgres
+    - FROM: 10.1.0
+      TO: daily-stable10-qa
+      DB_TYPE: oracle
+    - FROM: 10.1.0
+      TO: daily-master-qa
+      DB_TYPE: sqlite
+    - FROM: 10.1.0
+      TO: daily-master-qa
+      DB_TYPE: mysql
+    - FROM: 10.1.0
+      TO: daily-master-qa
+      DB_TYPE: postgres
+    - FROM: 10.1.0
+      TO: daily-master-qa
+      DB_TYPE: oracle
 
     - FROM: 8.2.11
       TO: daily-master-qa
