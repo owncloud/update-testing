@@ -60,6 +60,17 @@ pipeline:
 #      - chmod +x lib/composer/phpunit/phpunit/phpunit
 #      - cd tests
 #      - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml"
+  configure-owncloud:
+    image: owncloudci/php:7.1
+    pull: true
+    commands:
+      - cd owncloud
+      - php occ a:l
+      - php occ a:e testing
+      - php occ a:l
+      - php occ config:system:set trusted_domains 1 --value=server-https
+      - php occ log:manage --level 2
+      - php occ config:list
 
   fix-permissions:
     image: owncloudci/php:7.1
