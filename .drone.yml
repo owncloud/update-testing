@@ -84,7 +84,10 @@ pipeline:
     environment:
       - TEST_SERVER_URL=https://server-https
     commands:
-      - cd owncloud/tests/acceptance
+      - mkdir -p /drone/src/owncloud/vendor-bin/behat
+      - wget https://raw.githubusercontent.com/owncloud/core/stable10/vendor-bin/behat/composer.json -O /drone/src/owncloud/vendor-bin/behat/composer.json
+      - cd /drone/src/owncloud/vendor-bin/behat && composer install
+      - cd /drone/src/owncloud/tests/acceptance
       - bash run.sh --remote --tags "@smokeTest" --type api
 
   notify-rocketchat:
