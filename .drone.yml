@@ -51,15 +51,15 @@ pipeline:
       - cat version.php
       - php ./occ up
 
-  run-phpunit:
-    image: owncloudci/php:7.1
-    pull: true
-    commands:
-      - cd owncloud
-      - php ./occ app:disable gallery
-      - chmod +x lib/composer/phpunit/phpunit/phpunit
-      - cd tests
-      - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml"
+#  run-phpunit:
+#    image: owncloudci/php:7.1
+#    pull: true
+#    commands:
+#      - cd owncloud
+#      - php ./occ app:disable gallery
+#      - chmod +x lib/composer/phpunit/phpunit/phpunit
+#      - cd tests
+#      - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml"
 
   fix-permissions:
     image: owncloudci/php:7.1
@@ -129,110 +129,110 @@ matrix:
     - FROM: 8.2.11
       TO: daily-stable10-qa
       DB_TYPE: sqlite
-    - FROM: 8.2.11
-      TO: daily-stable10-qa
-      DB_TYPE: mysql
-    - FROM: 8.2.11
-      TO: daily-stable10-qa
-      DB_TYPE: postgres
-    - FROM: 8.2.11
-      TO: daily-stable10-qa
-      DB_TYPE: oracle
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: sqlite
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: mysql
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: oracle
-    - FROM: 9.0.9
-      TO: daily-stable10-qa
-      DB_TYPE: sqlite
-    - FROM: 9.0.9
-      TO: daily-stable10-qa
-      DB_TYPE: mysql
-    - FROM: 9.0.9
-      TO: daily-stable10-qa
-      DB_TYPE: postgres
-    - FROM: 9.0.9
-      TO: daily-stable10-qa
-      DB_TYPE: oracle
-    - FROM: 9.0.9
-      TO: daily-master-qa
-      DB_TYPE: sqlite
-    - FROM: 9.0.9
-      TO: daily-master-qa
-      DB_TYPE: mysql
-    - FROM: 9.0.9
-      TO: daily-master-qa
-      DB_TYPE: postgres
-    - FROM: 9.0.9
-      TO: daily-master-qa
-      DB_TYPE: oracle
-    - FROM: 9.1.5
-      TO: daily-stable10-qa
-      DB_TYPE: sqlite
-    - FROM: 9.1.5
-      TO: daily-stable10-qa
-      DB_TYPE: mysql
-    - FROM: 9.1.5
-      TO: daily-stable10-qa
-      DB_TYPE: postgres
-    - FROM: 9.1.5
-      TO: daily-stable10-qa
-      DB_TYPE: oracle
-    - FROM: 9.1.5
-      TO: daily-master-qa
-      DB_TYPE: sqlite
-    - FROM: 9.1.5
-      TO: daily-master-qa
-      DB_TYPE: mysql
-    - FROM: 9.1.5
-      TO: daily-master-qa
-      DB_TYPE: postgres
-    - FROM: 9.1.5
-      TO: daily-master-qa
-      DB_TYPE: oracle
-    - FROM: 10.0.4
-      TO: daily-stable10-qa
-      DB_TYPE: sqlite
-    - FROM: 10.0.4
-      TO: daily-stable10-qa
-      DB_TYPE: mysql
-    - FROM: 10.0.4
-      TO: daily-stable10-qa
-      DB_TYPE: postgres
-    - FROM: 10.0.4
-      TO: daily-stable10-qa
-      DB_TYPE: oracle
-    - FROM: 10.0.4
-      TO: daily-master-qa
-      DB_TYPE: sqlite
-    - FROM: 10.0.4
-      TO: daily-master-qa
-      DB_TYPE: mysql
-    - FROM: 10.0.4
-      TO: daily-master-qa
-      DB_TYPE: postgres
-    - FROM: 10.0.4
-      TO: daily-master-qa
-      DB_TYPE: oracle
-
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:10.3
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:10.4
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:11
+#    - FROM: 8.2.11
+#      TO: daily-stable10-qa
+#      DB_TYPE: mysql
+#    - FROM: 8.2.11
+#      TO: daily-stable10-qa
+#      DB_TYPE: postgres
+#    - FROM: 8.2.11
+#      TO: daily-stable10-qa
+#      DB_TYPE: oracle
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: sqlite
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: mysql
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: oracle
+#    - FROM: 9.0.9
+#      TO: daily-stable10-qa
+#      DB_TYPE: sqlite
+#    - FROM: 9.0.9
+#      TO: daily-stable10-qa
+#      DB_TYPE: mysql
+#    - FROM: 9.0.9
+#      TO: daily-stable10-qa
+#      DB_TYPE: postgres
+#    - FROM: 9.0.9
+#      TO: daily-stable10-qa
+#      DB_TYPE: oracle
+#    - FROM: 9.0.9
+#      TO: daily-master-qa
+#      DB_TYPE: sqlite
+#    - FROM: 9.0.9
+#      TO: daily-master-qa
+#      DB_TYPE: mysql
+#    - FROM: 9.0.9
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#    - FROM: 9.0.9
+#      TO: daily-master-qa
+#      DB_TYPE: oracle
+#    - FROM: 9.1.5
+#      TO: daily-stable10-qa
+#      DB_TYPE: sqlite
+#    - FROM: 9.1.5
+#      TO: daily-stable10-qa
+#      DB_TYPE: mysql
+#    - FROM: 9.1.5
+#      TO: daily-stable10-qa
+#      DB_TYPE: postgres
+#    - FROM: 9.1.5
+#      TO: daily-stable10-qa
+#      DB_TYPE: oracle
+#    - FROM: 9.1.5
+#      TO: daily-master-qa
+#      DB_TYPE: sqlite
+#    - FROM: 9.1.5
+#      TO: daily-master-qa
+#      DB_TYPE: mysql
+#    - FROM: 9.1.5
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#    - FROM: 9.1.5
+#      TO: daily-master-qa
+#      DB_TYPE: oracle
+#    - FROM: 10.0.4
+#      TO: daily-stable10-qa
+#      DB_TYPE: sqlite
+#    - FROM: 10.0.4
+#      TO: daily-stable10-qa
+#      DB_TYPE: mysql
+#    - FROM: 10.0.4
+#      TO: daily-stable10-qa
+#      DB_TYPE: postgres
+#    - FROM: 10.0.4
+#      TO: daily-stable10-qa
+#      DB_TYPE: oracle
+#    - FROM: 10.0.4
+#      TO: daily-master-qa
+#      DB_TYPE: sqlite
+#    - FROM: 10.0.4
+#      TO: daily-master-qa
+#      DB_TYPE: mysql
+#    - FROM: 10.0.4
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#    - FROM: 10.0.4
+#      TO: daily-master-qa
+#      DB_TYPE: oracle
+#
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#      POSTGRES_IMAGE: postgres:10.3
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#      POSTGRES_IMAGE: postgres:10.4
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#      POSTGRES_IMAGE: postgres:11
 
