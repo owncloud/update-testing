@@ -101,76 +101,76 @@ services:
 
 matrix:
   include:
-    - FROM: 8.2.11
-      TO: 10.2.0RC2-qa
-      DB_TYPE: sqlite
-    - FROM: 8.2.11
-      TO: 10.2.0RC2-qa
-      DB_TYPE: mysql
-    - FROM: 8.2.11
-      TO: 10.2.0RC2-qa
-      DB_TYPE: postgres
-    - FROM: 8.2.11
-      TO: 10.2.0RC2-qa
-      DB_TYPE: oracle
-    - FROM: 9.0.9
-      TO: 10.2.0RC2-qa
-      DB_TYPE: sqlite
-    - FROM: 9.0.9
-      TO: 10.2.0RC2-qa
-      DB_TYPE: mysql
-    - FROM: 9.0.9
-      TO: 10.2.0RC2-qa
-      DB_TYPE: postgres
-    - FROM: 9.0.9
-      TO: 10.2.0RC2-qa
-      DB_TYPE: oracle
-    - FROM: 9.1.5
-      TO: 10.2.0RC2-qa
-      DB_TYPE: sqlite
-    - FROM: 9.1.5
-      TO: 10.2.0RC2-qa
-      DB_TYPE: mysql
-    - FROM: 9.1.5
-      TO: 10.2.0RC2-qa
-      DB_TYPE: postgres
-    - FROM: 9.1.5
-      TO: 10.2.0RC2-qa
-      DB_TYPE: oracle
-    - FROM: 10.0.4
-      TO: 10.2.0RC2-qa
-      DB_TYPE: sqlite
-    - FROM: 10.0.4
-      TO: 10.2.0RC2-qa
-      DB_TYPE: mysql
-    - FROM: 10.0.4
-      TO: 10.2.0RC2-qa
-      DB_TYPE: postgres
-    - FROM: 10.0.4
-      TO: 10.2.0RC2-qa
-      DB_TYPE: oracle
-    - FROM: 10.0.10
-      TO: 10.2.0RC2-qa
-      DB_TYPE: sqlite
-    - FROM: 10.0.10
-      TO: 10.2.0RC2-qa
-      DB_TYPE: mysql
-    - FROM: 10.0.10
-      TO: 10.2.0RC2-qa
-      DB_TYPE: postgres
-    - FROM: 10.0.10
-      TO: 10.2.0RC2-qa
-      DB_TYPE: oracle
+#    - FROM: 8.2.11
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: sqlite
+#    - FROM: 8.2.11
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: mysql
+#    - FROM: 8.2.11
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: postgres
+#    - FROM: 8.2.11
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: oracle
+#    - FROM: 9.0.9
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: sqlite
+#    - FROM: 9.0.9
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: mysql
+#    - FROM: 9.0.9
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: postgres
+#    - FROM: 9.0.9
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: oracle
+#    - FROM: 9.1.5
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: sqlite
+#    - FROM: 9.1.5
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: mysql
+#    - FROM: 9.1.5
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: postgres
+#    - FROM: 9.1.5
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: oracle
+#    - FROM: 10.0.4
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: sqlite
+#    - FROM: 10.0.4
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: mysql
+#    - FROM: 10.0.4
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: postgres
+#    - FROM: 10.0.4
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: oracle
+#    - FROM: 10.0.10
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: sqlite
+#    - FROM: 10.0.10
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: mysql
+#    - FROM: 10.0.10
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: postgres
+#    - FROM: 10.0.10
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: oracle
     - FROM: 10.1.0
       TO: 10.2.0RC2-qa
       DB_TYPE: sqlite
-    - FROM: 10.1.0
-      TO: 10.2.0RC2-qa
-      DB_TYPE: mysql
-    - FROM: 10.1.0
-      TO: 10.2.0RC2-qa
-      DB_TYPE: postgres
-    - FROM: 10.1.0
-      TO: 10.2.0RC2-qa
-      DB_TYPE: oracle
+#    - FROM: 10.1.0
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: mysql
+#    - FROM: 10.1.0
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: postgres
+#    - FROM: 10.1.0
+#      TO: 10.2.0RC2-qa
+#      DB_TYPE: oracle
 
