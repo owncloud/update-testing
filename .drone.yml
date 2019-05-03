@@ -57,6 +57,7 @@ pipeline:
     commands:
       - cd owncloud
       - php ./occ app:disable gallery
+      - php occ app:list
       - chmod +x lib/composer/phpunit/phpunit/phpunit
       - cd tests
       - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml"
