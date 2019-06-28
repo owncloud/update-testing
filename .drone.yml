@@ -211,16 +211,3 @@ matrix:
       TO: 10.2.1RC1-qa
       DB_TYPE: oracle
 
-    - FROM: 8.2.11
-      TO: 10.2.1RC1-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:10.3
-    - FROM: 8.2.11
-      TO: 10.2.1RC1-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:10.4
-    - FROM: 8.2.11
-      TO: 10.2.1RC1-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:11
-
