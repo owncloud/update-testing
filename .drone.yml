@@ -58,17 +58,19 @@ pipeline:
       - cd owncloud
       - php ./occ app:disable gallery
       - chmod +x lib/composer/phpunit/phpunit/phpunit
+      - php occ app:list
+      - php occ app:enable encryption || true
       - cd tests
       - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml"
 
-  notify-rocketchat:
-    image: plugins/slack:1
-    pull: true
-    secrets: [ slack_webhook ]
-    channel: builds
-    when:
-      local: false
-      status: [ changed, failure ]
+#  notify-rocketchat:
+#    image: plugins/slack:1
+#    pull: true
+#    secrets: [ slack_webhook ]
+#    channel: builds
+#    when:
+#      local: false
+#      status: [ changed, failure ]
 
 services:
   mysql:
@@ -101,124 +103,124 @@ services:
 matrix:
   include:
     - FROM: 8.2.11
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 8.2.11
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 8.2.11
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
     - FROM: 8.2.11
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 8.2.11
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 8.2.11
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
     - FROM: 9.0.9
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 9.0.9
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 9.0.9
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
     - FROM: 9.0.9
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 9.0.9
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 9.0.9
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
     - FROM: 9.1.5
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 9.1.5
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 9.1.5
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
     - FROM: 9.1.5
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 9.1.5
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 9.1.5
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
     - FROM: 10.0.4
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 10.0.4
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 10.0.4
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
     - FROM: 10.0.4
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 10.0.4
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 10.0.4
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
     - FROM: 10.0.10
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 10.0.10
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 10.0.10
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
     - FROM: 10.0.10
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 10.0.10
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 10.0.10
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
     - FROM: 10.1.0
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 10.1.0
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 10.1.0
-      TO: daily-stable10-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
     - FROM: 10.1.0
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: mysql
     - FROM: 10.1.0
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
     - FROM: 10.1.0
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: oracle
 
     - FROM: 8.2.11
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
       POSTGRES_IMAGE: postgres:10.3
     - FROM: 8.2.11
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
       POSTGRES_IMAGE: postgres:10.4
     - FROM: 8.2.11
-      TO: daily-master-qa
+      TO: 10.2.1RC1-qa
       DB_TYPE: postgres
       POSTGRES_IMAGE: postgres:11
 
