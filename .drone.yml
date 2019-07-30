@@ -164,16 +164,17 @@ matrix:
       TO: daily-master-qa
       DB_TYPE: oracle
 
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:10.3
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:10.4
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:11
+#   Needs to be adressed in core https://github.com/owncloud/core/issues/33187
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#      POSTGRES_IMAGE: postgres:10.3
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#      POSTGRES_IMAGE: postgres:10.4
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#      POSTGRES_IMAGE: postgres:11
 
