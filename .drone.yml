@@ -101,15 +101,6 @@ services:
 matrix:
   include:
     - FROM: 8.2.11
-      TO: daily-stable10-qa
-      DB_TYPE: mysql
-    - FROM: 8.2.11
-      TO: daily-stable10-qa
-      DB_TYPE: postgres
-    - FROM: 8.2.11
-      TO: daily-stable10-qa
-      DB_TYPE: oracle
-    - FROM: 8.2.11
       TO: daily-master-qa
       DB_TYPE: mysql
     - FROM: 8.2.11
@@ -119,15 +110,6 @@ matrix:
       TO: daily-master-qa
       DB_TYPE: oracle
     - FROM: 9.0.9
-      TO: daily-stable10-qa
-      DB_TYPE: mysql
-    - FROM: 9.0.9
-      TO: daily-stable10-qa
-      DB_TYPE: postgres
-    - FROM: 9.0.9
-      TO: daily-stable10-qa
-      DB_TYPE: oracle
-    - FROM: 9.0.9
       TO: daily-master-qa
       DB_TYPE: mysql
     - FROM: 9.0.9
@@ -137,15 +119,6 @@ matrix:
       TO: daily-master-qa
       DB_TYPE: oracle
     - FROM: 9.1.5
-      TO: daily-stable10-qa
-      DB_TYPE: mysql
-    - FROM: 9.1.5
-      TO: daily-stable10-qa
-      DB_TYPE: postgres
-    - FROM: 9.1.5
-      TO: daily-stable10-qa
-      DB_TYPE: oracle
-    - FROM: 9.1.5
       TO: daily-master-qa
       DB_TYPE: mysql
     - FROM: 9.1.5
@@ -173,15 +146,6 @@ matrix:
       TO: daily-master-qa
       DB_TYPE: oracle
     - FROM: 10.0.10
-      TO: daily-stable10-qa
-      DB_TYPE: mysql
-    - FROM: 10.0.10
-      TO: daily-stable10-qa
-      DB_TYPE: postgres
-    - FROM: 10.0.10
-      TO: daily-stable10-qa
-      DB_TYPE: oracle
-    - FROM: 10.0.10
       TO: daily-master-qa
       DB_TYPE: mysql
     - FROM: 10.0.10
@@ -189,15 +153,6 @@ matrix:
       DB_TYPE: postgres
     - FROM: 10.0.10
       TO: daily-master-qa
-      DB_TYPE: oracle
-    - FROM: 10.1.0
-      TO: daily-stable10-qa
-      DB_TYPE: mysql
-    - FROM: 10.1.0
-      TO: daily-stable10-qa
-      DB_TYPE: postgres
-    - FROM: 10.1.0
-      TO: daily-stable10-qa
       DB_TYPE: oracle
     - FROM: 10.1.0
       TO: daily-master-qa
@@ -209,16 +164,17 @@ matrix:
       TO: daily-master-qa
       DB_TYPE: oracle
 
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:10.3
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:10.4
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      POSTGRES_IMAGE: postgres:11
+#   Needs to be adressed in core https://github.com/owncloud/core/issues/33187
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#      POSTGRES_IMAGE: postgres:10.3
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#      POSTGRES_IMAGE: postgres:10.4
+#    - FROM: 8.2.11
+#      TO: daily-master-qa
+#      DB_TYPE: postgres
+#      POSTGRES_IMAGE: postgres:11
 
