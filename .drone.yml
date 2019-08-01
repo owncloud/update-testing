@@ -128,15 +128,6 @@ matrix:
       TO: daily-master-qa
       DB_TYPE: oracle
     - FROM: 10.0.4
-      TO: daily-stable10-qa
-      DB_TYPE: mysql
-    - FROM: 10.0.4
-      TO: daily-stable10-qa
-      DB_TYPE: postgres
-    - FROM: 10.0.4
-      TO: daily-stable10-qa
-      DB_TYPE: oracle
-    - FROM: 10.0.4
       TO: daily-master-qa
       DB_TYPE: mysql
     - FROM: 10.0.4
