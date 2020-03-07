@@ -39,7 +39,7 @@ fi
 # Cleanup data  / config
 rm -rf ${DATA_DIRECTORY} config/config.php
 
-PLUGIN_DB_TIMEOUT=120
+PLUGIN_DB_TIMEOUT=600
 
 plugin_wait_for_oracle() {
     local sqlplus=/usr/lib/oracle/12.2/client64/bin/sqlplus
@@ -79,23 +79,23 @@ plugin_wait_for_oracle() {
 echo "waiting for database to be ready"
 case "${DB_TYPE}" in
   mariadb)
-    wait-for-it -t 120 mariadb:3306
+    wait-for-it -t 600 mariadb:3306
     DB=mysql
     ;;
   mysql)
-    wait-for-it -t 120 mysql:3306
+    wait-for-it -t 600 mysql:3306
     DB=mysql
     ;;
   mysqlmb4)
-    wait-for-it -t 120 mysqlmb4:3306
+    wait-for-it -t 600 mysqlmb4:3306
     DB=mysql
     ;;
   postgres)
-    wait-for-it -t 120 postgres:5432
+    wait-for-it -t 600 postgres:5432
     DB=pgsql
     ;;
   oracle)
-    wait-for-it -t 120 oracle:1521
+    wait-for-it -t 600 oracle:1521
     DB=oci
     DB_USERNAME=autotest
     DB_NAME='XE'
