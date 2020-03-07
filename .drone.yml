@@ -93,7 +93,7 @@ services:
         DB_TYPE: postgres
 
   oracle:
-    image: deepdiver/docker-oracle-xe-11g
+    image: owncloudci/oracle-xe
     when:
       matrix:
         DB_TYPE: oracle
