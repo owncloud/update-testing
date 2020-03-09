@@ -11,7 +11,7 @@ clone:
     pull: true
 
 pipeline:
-  owncloud-download:
+  owncloud-download-v8orv9:
     image: owncloudci/php:7.0
     pull: true
     commands:
@@ -19,8 +19,23 @@ pipeline:
       - rm -rf owncloud
       - .drone/download.sh ${FROM} ${TO}
       - tar -jxf owncloud-${FROM}.tar.bz2 -C /drone/src
+    when:
+      matrix:
+        MAJOR_VERSION: v8orv9
 
-  install-from-version:
+  owncloud-download-v10:
+    image: owncloudci/php:7.1
+    pull: true
+    commands:
+      - pwd
+      - rm -rf owncloud
+      - .drone/download.sh ${FROM} ${TO}
+      - tar -jxf owncloud-${FROM}.tar.bz2 -C /drone/src
+    when:
+      matrix:
+        MAJOR_VERSION: v10
+
+  install-from-version-v8orv9:
     image: owncloudci/php:7.0
     pull: true
     environment:
@@ -28,7 +43,7 @@ pipeline:
     commands:
       - cd owncloud
       - ../.drone/install-server.sh
-      - more config/config.pphp
+      - more config/config.php
       - php -f cron.php
       - php -f cron.php
       - php ./occ app:disable activity
@@ -39,6 +54,32 @@ pipeline:
       - php ./occ app:disable files_videoviewer
       - php ./occ app:disable updater
       - php ./occ app:disable templateeditor
+    when:
+      matrix:
+        MAJOR_VERSION: v8orv9
+
+  install-from-version-v10:
+    image: owncloudci/php:7.1
+    pull: true
+    environment:
+      - DB_TYPE=${DB_TYPE}
+    commands:
+      - cd owncloud
+      - ../.drone/install-server.sh
+      - more config/config.php
+      - php -f cron.php
+      - php -f cron.php
+      - php ./occ app:disable activity
+      - php ./occ app:disable files_pdfviewer
+      - php ./occ app:disable files_texteditor
+      - php ./occ app:disable gallery
+      - php ./occ app:disable files_videoplayer
+      - php ./occ app:disable files_videoviewer
+      - php ./occ app:disable updater
+      - php ./occ app:disable templateeditor
+    when:
+      matrix:
+        MAJOR_VERSION: v10
 
   upgrade-test:
     image: owncloudci/php:7.1
@@ -103,75 +144,111 @@ matrix:
     - FROM: 8.2.11
       TO: daily-master-qa
       DB_TYPE: mysql
+      MAJOR_VERSION: v8orv9
     - FROM: 8.2.11
       TO: daily-master-qa
       DB_TYPE: postgres
+      MAJOR_VERSION: v8orv9
     - FROM: 8.2.11
       TO: daily-master-qa
       DB_TYPE: oracle
+      MAJOR_VERSION: v8orv9
     - FROM: 9.0.9
       TO: daily-master-qa
       DB_TYPE: mysql
+      MAJOR_VERSION: v8orv9
     - FROM: 9.0.9
       TO: daily-master-qa
       DB_TYPE: postgres
+      MAJOR_VERSION: v8orv9
     - FROM: 9.0.9
       TO: daily-master-qa
       DB_TYPE: oracle
+      MAJOR_VERSION: v8orv9
     - FROM: 9.1.5
       TO: daily-master-qa
       DB_TYPE: mysql
+      MAJOR_VERSION: v8orv9
     - FROM: 9.1.5
       TO: daily-master-qa
       DB_TYPE: postgres
+      MAJOR_VERSION: v8orv9
     - FROM: 9.1.5
       TO: daily-master-qa
       DB_TYPE: oracle
+      MAJOR_VERSION: v8orv9
     - FROM: 10.0.4
       TO: daily-master-qa
       DB_TYPE: mysql
+      MAJOR_VERSION: v10
     - FROM: 10.0.4
       TO: daily-master-qa
       DB_TYPE: postgres
+      MAJOR_VERSION: v10
     - FROM: 10.0.4
       TO: daily-master-qa
       DB_TYPE: oracle
+      MAJOR_VERSION: v10
     - FROM: 10.0.10
       TO: daily-master-qa
       DB_TYPE: mysql
+      MAJOR_VERSION: v10
     - FROM: 10.0.10
       TO: daily-master-qa
       DB_TYPE: postgres
+      MAJOR_VERSION: v10
     - FROM: 10.0.10
       TO: daily-master-qa
       DB_TYPE: oracle
+      MAJOR_VERSION: v10
     - FROM: 10.1.0
       TO: daily-master-qa
       DB_TYPE: mysql
+      MAJOR_VERSION: v10
     - FROM: 10.1.0
       TO: daily-master-qa
       DB_TYPE: postgres
+      MAJOR_VERSION: v10
     - FROM: 10.1.0
       TO: daily-master-qa
       DB_TYPE: oracle
+      MAJOR_VERSION: v10
     - FROM: 10.2.0
       TO: daily-master-qa
       DB_TYPE: mysql
+      MAJOR_VERSION: v10
     - FROM: 10.2.0
       TO: daily-master-qa
       DB_TYPE: postgres
+      MAJOR_VERSION: v10
     - FROM: 10.2.0
       TO: daily-master-qa
       DB_TYPE: oracle
+      MAJOR_VERSION: v10
     - FROM: 10.3.0
       TO: daily-master-qa
       DB_TYPE: mysql
+      MAJOR_VERSION: v10
     - FROM: 10.3.0
       TO: daily-master-qa
       DB_TYPE: postgres
+      MAJOR_VERSION: v10
     - FROM: 10.3.0
       TO: daily-master-qa
       DB_TYPE: oracle
+      MAJOR_VERSION: v10
+    - FROM: 10.4.0
+      TO: daily-master-qa
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10
+    - FROM: 10.4.0
+      TO: daily-master-qa
+      DB_TYPE: postgres
+      MAJOR_VERSION: v10
+    - FROM: 10.4.0
+      TO: daily-master-qa
+      DB_TYPE: oracle
+      MAJOR_VERSION: v10
 
 #   Needs to be adressed in core https://github.com/owncloud/core/issues/33187
 #    - FROM: 8.2.11
