@@ -39,6 +39,12 @@ fi
 # Cleanup data  / config
 rm -rf ${DATA_DIRECTORY} config/config.php
 
+# Create any needed "default" apps_paths directory like apps-external
+if [ -n "${EXTRA_APPS_PATHS_DIR}" ]
+then
+  mkdir -p ${EXTRA_APPS_PATHS_DIR}
+fi
+
 PLUGIN_DB_TIMEOUT=600
 
 plugin_wait_for_oracle() {

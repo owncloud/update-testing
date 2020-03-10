@@ -63,6 +63,7 @@ pipeline:
     pull: true
     environment:
       - DB_TYPE=${DB_TYPE}
+      - EXTRA_APPS_PATHS_DIR=${EXTRA_APPS_PATHS_DIR}
     commands:
       - cd owncloud
       - ../.drone/install-server.sh
@@ -87,7 +88,7 @@ pipeline:
     commands:
       - cd owncloud
       - cat version.php
-      - ls | grep -v data | grep -v config | xargs rm -rf
+      - ls | grep -v data | grep -v config | grep -v apps-external | xargs rm -rf
       - tar -jxf /drone/src/owncloud-${TO}.tar.bz2 -C /drone/src
       - cat version.php
       - php ./occ up
@@ -217,38 +218,47 @@ matrix:
       TO: daily-master-qa
       DB_TYPE: mysql
       MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.2.0
       TO: daily-master-qa
       DB_TYPE: postgres
       MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.2.0
       TO: daily-master-qa
       DB_TYPE: oracle
       MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.3.0
       TO: daily-master-qa
       DB_TYPE: mysql
       MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.3.0
       TO: daily-master-qa
       DB_TYPE: postgres
       MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.3.0
       TO: daily-master-qa
       DB_TYPE: oracle
       MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.4.0
       TO: daily-master-qa
       DB_TYPE: mysql
       MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.4.0
       TO: daily-master-qa
       DB_TYPE: postgres
       MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.4.0
       TO: daily-master-qa
       DB_TYPE: oracle
       MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
 
 #   Needs to be adressed in core https://github.com/owncloud/core/issues/33187
 #    - FROM: 8.2.11
