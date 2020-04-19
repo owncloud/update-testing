@@ -83,7 +83,7 @@ pipeline:
         MAJOR_VERSION: v10
 
   upgrade-test:
-    image: owncloudci/php:7.1
+    image: owncloudci/php:7.2
     pull: true
     commands:
       - cd owncloud
@@ -94,7 +94,7 @@ pipeline:
       - php ./occ up
 
   run-phpunit:
-    image: owncloudci/php:7.1
+    image: owncloudci/php:7.2
     pull: true
     commands:
       - cd owncloud
