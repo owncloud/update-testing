@@ -152,6 +152,16 @@ matrix:
       DB_TYPE: mysql
       MAJOR_VERSION: v10
       EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.6.0
+      TO: daily-master-qa
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.7.0
+      TO: daily-master-qa
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
 
 #   Needs to be adressed in core https://github.com/owncloud/core/issues/33187
 #    - FROM: 8.2.11
