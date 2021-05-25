@@ -152,6 +152,11 @@ matrix:
       DB_TYPE: mysql
       MAJOR_VERSION: v10
       EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.5.0
+      TO: daily-master-qa
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.6.0
       TO: daily-master-qa
       DB_TYPE: mysql
