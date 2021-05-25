@@ -59,7 +59,7 @@ pipeline:
         MAJOR_VERSION: v8orv9
 
   install-from-version-v10:
-    image: owncloudci/php:7.1
+    image: owncloudci/php:7.2
     pull: true
     environment:
       - DB_TYPE=${DB_TYPE}
