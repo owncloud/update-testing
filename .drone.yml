@@ -168,7 +168,7 @@ matrix:
       MAJOR_VERSION: v10
       EXTRA_APPS_PATHS_DIR: apps-external
 
-#   Needs to be adressed in core https://github.com/owncloud/core/issues/33187
+#   Needs to be addressed in core https://github.com/owncloud/core/issues/33187
 #    - FROM: 8.2.11
 #      TO: daily-master-qa
 #      DB_TYPE: postgres
