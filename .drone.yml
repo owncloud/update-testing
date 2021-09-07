@@ -23,7 +23,7 @@ pipeline:
       matrix:
         MAJOR_VERSION: v8orv9
 
-  owncloud-download-v10old:
+  owncloud-download-v10-71:
     image: owncloudci/php:7.1
     pull: true
     commands:
@@ -33,10 +33,22 @@ pipeline:
       - tar -jxf owncloud-${FROM}.tar.bz2 -C /drone/src
     when:
       matrix:
-        MAJOR_VERSION: v10old
+        MAJOR_VERSION: v10-71
+
+  owncloud-download-v10-72:
+    image: owncloudci/php:7.2
+    pull: true
+    commands:
+      - pwd
+      - rm -rf owncloud
+      - .drone/download.sh ${FROM} ${TO}
+      - tar -jxf owncloud-${FROM}.tar.bz2 -C /drone/src
+    when:
+      matrix:
+        MAJOR_VERSION: v10-72
 
   owncloud-download-v10:
-    image: owncloudci/php:7.2
+    image: owncloudci/php:7.4
     pull: true
     commands:
       - pwd
@@ -70,7 +82,7 @@ pipeline:
       matrix:
         MAJOR_VERSION: v8orv9
 
-  install-from-version-v10old:
+  install-from-version-v10-71:
     image: owncloudci/php:7.1
     pull: true
     environment:
@@ -92,10 +104,34 @@ pipeline:
       - php ./occ app:disable templateeditor
     when:
       matrix:
-        MAJOR_VERSION: v10old
+        MAJOR_VERSION: v10-71
+
+  install-from-version-v10-72:
+    image: owncloudci/php:7.2
+    pull: true
+    environment:
+      - DB_TYPE=${DB_TYPE}
+      - EXTRA_APPS_PATHS_DIR=${EXTRA_APPS_PATHS_DIR}
+    commands:
+      - cd owncloud
+      - ../.drone/install-server.sh
+      - more config/config.php
+      - php -f cron.php
+      - php -f cron.php
+      - php ./occ app:disable activity
+      - php ./occ app:disable files_pdfviewer
+      - php ./occ app:disable files_texteditor
+      - php ./occ app:disable gallery
+      - php ./occ app:disable files_videoplayer
+      - php ./occ app:disable files_videoviewer
+      - php ./occ app:disable updater
+      - php ./occ app:disable templateeditor
+    when:
+      matrix:
+        MAJOR_VERSION: v10-72
 
   install-from-version-v10:
-    image: owncloudci/php:7.2
+    image: owncloudci/php:7.4
     pull: true
     environment:
       - DB_TYPE=${DB_TYPE}
@@ -119,7 +155,7 @@ pipeline:
         MAJOR_VERSION: v10
 
   upgrade-test:
-    image: owncloudci/php:7.2
+    image: owncloudci/php:7.4
     pull: true
     commands:
       - cd owncloud
@@ -130,7 +166,7 @@ pipeline:
       - php ./occ up
 
   run-phpunit:
-    image: owncloudci/php:7.2
+    image: owncloudci/php:7.4
     pull: true
     commands:
       - cd owncloud
@@ -217,83 +253,83 @@ matrix:
     - FROM: 10.0.4
       TO: daily-master-qa
       DB_TYPE: mysql
-      MAJOR_VERSION: v10old
+      MAJOR_VERSION: v10-71
     - FROM: 10.0.4
       TO: daily-master-qa
       DB_TYPE: postgres
-      MAJOR_VERSION: v10old
+      MAJOR_VERSION: v10-71
     - FROM: 10.0.4
       TO: daily-master-qa
       DB_TYPE: oracle
-      MAJOR_VERSION: v10old
+      MAJOR_VERSION: v10-71
     - FROM: 10.0.10
       TO: daily-master-qa
       DB_TYPE: mysql
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
     - FROM: 10.0.10
       TO: daily-master-qa
       DB_TYPE: postgres
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
     - FROM: 10.0.10
       TO: daily-master-qa
       DB_TYPE: oracle
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
     - FROM: 10.1.0
       TO: daily-master-qa
       DB_TYPE: mysql
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
     - FROM: 10.1.0
       TO: daily-master-qa
       DB_TYPE: postgres
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
     - FROM: 10.1.0
       TO: daily-master-qa
       DB_TYPE: oracle
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
     - FROM: 10.2.0
       TO: daily-master-qa
       DB_TYPE: mysql
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.2.0
       TO: daily-master-qa
       DB_TYPE: postgres
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.2.0
       TO: daily-master-qa
       DB_TYPE: oracle
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.3.0
       TO: daily-master-qa
       DB_TYPE: mysql
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.3.0
       TO: daily-master-qa
       DB_TYPE: postgres
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.3.0
       TO: daily-master-qa
       DB_TYPE: oracle
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.4.0
       TO: daily-master-qa
       DB_TYPE: mysql
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.4.0
       TO: daily-master-qa
       DB_TYPE: postgres
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.4.0
       TO: daily-master-qa
       DB_TYPE: oracle
-      MAJOR_VERSION: v10
+      MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.5.0
       TO: daily-master-qa
