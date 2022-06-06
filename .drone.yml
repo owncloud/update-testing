@@ -78,6 +78,7 @@ pipeline:
       - php ./occ app:disable files_videoviewer
       - php ./occ app:disable updater
       - php ./occ app:disable templateeditor
+      - php ./occ app:disable notifications
     when:
       matrix:
         MAJOR_VERSION: v8orv9
@@ -102,6 +103,7 @@ pipeline:
       - php ./occ app:disable files_videoviewer
       - php ./occ app:disable updater
       - php ./occ app:disable templateeditor
+      - php ./occ app:disable notifications
     when:
       matrix:
         MAJOR_VERSION: v10-71
@@ -126,6 +128,7 @@ pipeline:
       - php ./occ app:disable files_videoviewer
       - php ./occ app:disable updater
       - php ./occ app:disable templateeditor
+      - php ./occ app:disable notifications
     when:
       matrix:
         MAJOR_VERSION: v10-72
@@ -150,6 +153,7 @@ pipeline:
       - php ./occ app:disable files_videoviewer
       - php ./occ app:disable updater
       - php ./occ app:disable templateeditor
+      - php ./occ app:disable notifications
     when:
       matrix:
         MAJOR_VERSION: v10
