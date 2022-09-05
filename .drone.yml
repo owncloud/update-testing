@@ -230,42 +230,30 @@ matrix:
       TO: daily-master-qa
       DB_TYPE: oracle
       MAJOR_VERSION: v8orv9
-    - FROM: 9.0.9
+    - FROM: 9.0.11
       TO: daily-master-qa
       DB_TYPE: mysql
       MAJOR_VERSION: v8orv9
-    - FROM: 9.0.9
+    - FROM: 9.0.11
       TO: daily-master-qa
       DB_TYPE: postgres
       MAJOR_VERSION: v8orv9
-    - FROM: 9.0.9
+    - FROM: 9.0.11
       TO: daily-master-qa
       DB_TYPE: oracle
       MAJOR_VERSION: v8orv9
-    - FROM: 9.1.5
+    - FROM: 9.1.8
       TO: daily-master-qa
       DB_TYPE: mysql
       MAJOR_VERSION: v8orv9
-    - FROM: 9.1.5
+    - FROM: 9.1.8
       TO: daily-master-qa
       DB_TYPE: postgres
       MAJOR_VERSION: v8orv9
-    - FROM: 9.1.5
+    - FROM: 9.1.8
       TO: daily-master-qa
       DB_TYPE: oracle
       MAJOR_VERSION: v8orv9
-    - FROM: 10.0.4
-      TO: daily-master-qa
-      DB_TYPE: mysql
-      MAJOR_VERSION: v10-71
-    - FROM: 10.0.4
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      MAJOR_VERSION: v10-71
-    - FROM: 10.0.4
-      TO: daily-master-qa
-      DB_TYPE: oracle
-      MAJOR_VERSION: v10-71
     - FROM: 10.0.10
       TO: daily-master-qa
       DB_TYPE: mysql
@@ -278,59 +266,59 @@ matrix:
       TO: daily-master-qa
       DB_TYPE: oracle
       MAJOR_VERSION: v10-72
-    - FROM: 10.1.0
+    - FROM: 10.1.1
       TO: daily-master-qa
       DB_TYPE: mysql
       MAJOR_VERSION: v10-72
-    - FROM: 10.1.0
+    - FROM: 10.1.1
       TO: daily-master-qa
       DB_TYPE: postgres
       MAJOR_VERSION: v10-72
-    - FROM: 10.1.0
+    - FROM: 10.1.1
       TO: daily-master-qa
       DB_TYPE: oracle
       MAJOR_VERSION: v10-72
-    - FROM: 10.2.0
+    - FROM: 10.2.1
       TO: daily-master-qa
       DB_TYPE: mysql
       MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
-    - FROM: 10.2.0
+    - FROM: 10.2.1
       TO: daily-master-qa
       DB_TYPE: postgres
       MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
-    - FROM: 10.2.0
-      TO: daily-master-qa
-      DB_TYPE: oracle
-      MAJOR_VERSION: v10-72
-      EXTRA_APPS_PATHS_DIR: apps-external
-    - FROM: 10.3.0
-      TO: daily-master-qa
-      DB_TYPE: mysql
-      MAJOR_VERSION: v10-72
-      EXTRA_APPS_PATHS_DIR: apps-external
-    - FROM: 10.3.0
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      MAJOR_VERSION: v10-72
-      EXTRA_APPS_PATHS_DIR: apps-external
-    - FROM: 10.3.0
+    - FROM: 10.2.1
       TO: daily-master-qa
       DB_TYPE: oracle
       MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
-    - FROM: 10.4.0
+    - FROM: 10.3.2
       TO: daily-master-qa
       DB_TYPE: mysql
       MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
-    - FROM: 10.4.0
+    - FROM: 10.3.2
       TO: daily-master-qa
       DB_TYPE: postgres
       MAJOR_VERSION: v10-72
       EXTRA_APPS_PATHS_DIR: apps-external
-    - FROM: 10.4.0
+    - FROM: 10.3.2
+      TO: daily-master-qa
+      DB_TYPE: oracle
+      MAJOR_VERSION: v10-72
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.4.1
+      TO: daily-master-qa
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10-72
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.4.1
+      TO: daily-master-qa
+      DB_TYPE: postgres
+      MAJOR_VERSION: v10-72
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.4.1
       TO: daily-master-qa
       DB_TYPE: oracle
       MAJOR_VERSION: v10-72
@@ -376,6 +364,36 @@ matrix:
       MAJOR_VERSION: v10
       EXTRA_APPS_PATHS_DIR: apps-external
     - FROM: 10.7.0
+      TO: daily-master-qa
+      DB_TYPE: oracle
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.8.0
+      TO: daily-master-qa
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.8.0
+      TO: daily-master-qa
+      DB_TYPE: postgres
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.8.0
+      TO: daily-master-qa
+      DB_TYPE: oracle
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.9.1
+      TO: daily-master-qa
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.9.1
+      TO: daily-master-qa
+      DB_TYPE: postgres
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.9.1
       TO: daily-master-qa
       DB_TYPE: oracle
       MAJOR_VERSION: v10
