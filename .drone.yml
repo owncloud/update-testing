@@ -12,7 +12,7 @@ clone:
 
 pipeline:
   owncloud-download-v8orv9:
-    image: owncloudci/php:7.0
+    image: owncloudci/php:7.4
     pull: true
     commands:
       - pwd
@@ -166,9 +166,8 @@ pipeline:
       - cat version.php
       - ls | grep -v data | grep -v config | grep -v apps-external | xargs rm -rf
       # - tar -jxf /drone/src/owncloud-${TO}.tar.bz2 -C /drone/src
-      - ls
-      - cp -r /drone/src/core/. /drone/src/owncloud
-      - ls
+      - tar -jxf /drone/src/owncloud-core.tar.bz2 -C /drone/src
+      # - cp -r /drone/src/core/. /drone/src/owncloud
       - cat version.php
       - php ./occ up
 

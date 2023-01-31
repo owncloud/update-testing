@@ -21,6 +21,9 @@ else
 fi
 
 git clone --depth 1 --single-branch -b tests/unit-debug https://github.com/owncloud/core.git /drone/src/core
+cd /drone/src/core || exit
+make
+make dist
 # if [ ! -f $TO ]; then
 #   # Look in download.owncloud.com/server for the tarball
 #   # All official tarballs will be found there
