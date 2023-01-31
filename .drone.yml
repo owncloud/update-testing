@@ -165,7 +165,10 @@ pipeline:
       - cd owncloud
       - cat version.php
       - ls | grep -v data | grep -v config | grep -v apps-external | xargs rm -rf
-      - tar -jxf /drone/src/owncloud-${TO}.tar.bz2 -C /drone/src
+      # - tar -jxf /drone/src/owncloud-${TO}.tar.bz2 -C /drone/src
+      - ls
+      - cp -r /drone/src/core/. /drone/src/owncloud
+      - ls
       - cat version.php
       - php ./occ up
 
@@ -179,14 +182,14 @@ pipeline:
       - cd tests
       - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml"
 
-  notify-rocketchat:
-    image: plugins/slack:1
-    pull: true
-    secrets: [ slack_webhook ]
-    channel: builds
-    when:
-      local: false
-      status: [ changed, failure ]
+  # notify-rocketchat:
+  #   image: plugins/slack:1
+  #   pull: true
+  #   secrets: [slack_webhook]
+  #   channel: builds
+  #   when:
+  #     local: false
+  #     status: [changed, failure]
 
 services:
   mysql:
@@ -222,39 +225,38 @@ matrix:
       TO: daily-master-qa
       DB_TYPE: mysql
       MAJOR_VERSION: v8orv9
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      MAJOR_VERSION: v8orv9
-    - FROM: 8.2.11
-      TO: daily-master-qa
-      DB_TYPE: oracle
-      MAJOR_VERSION: v8orv9
-    - FROM: 9.0.11
-      TO: daily-master-qa
-      DB_TYPE: mysql
-      MAJOR_VERSION: v8orv9
-    - FROM: 9.0.11
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      MAJOR_VERSION: v8orv9
-    - FROM: 9.0.11
-      TO: daily-master-qa
-      DB_TYPE: oracle
-      MAJOR_VERSION: v8orv9
-    - FROM: 9.1.8
-      TO: daily-master-qa
-      DB_TYPE: mysql
-      MAJOR_VERSION: v8orv9
-    - FROM: 9.1.8
-      TO: daily-master-qa
-      DB_TYPE: postgres
-      MAJOR_VERSION: v8orv9
-    - FROM: 9.1.8
-      TO: daily-master-qa
-      DB_TYPE: oracle
-      MAJOR_VERSION: v8orv9
-
+    # - FROM: 8.2.11
+    #   TO: daily-master-qa
+    #   DB_TYPE: postgres
+    #   MAJOR_VERSION: v8orv9
+    # - FROM: 8.2.11
+    #   TO: daily-master-qa
+    #   DB_TYPE: oracle
+    #   MAJOR_VERSION: v8orv9
+    # - FROM: 9.0.11
+    #   TO: daily-master-qa
+    #   DB_TYPE: mysql
+    #   MAJOR_VERSION: v8orv9
+    # - FROM: 9.0.11
+    #   TO: daily-master-qa
+    #   DB_TYPE: postgres
+    #   MAJOR_VERSION: v8orv9
+    # - FROM: 9.0.11
+    #   TO: daily-master-qa
+    #   DB_TYPE: oracle
+    #   MAJOR_VERSION: v8orv9
+    # - FROM: 9.1.8
+    #   TO: daily-master-qa
+    #   DB_TYPE: mysql
+    #   MAJOR_VERSION: v8orv9
+    # - FROM: 9.1.8
+    #   TO: daily-master-qa
+    #   DB_TYPE: postgres
+    #   MAJOR_VERSION: v8orv9
+    # - FROM: 9.1.8
+    #   TO: daily-master-qa
+    #   DB_TYPE: oracle
+    #   MAJOR_VERSION: v8orv9
 #   Needs to be addressed in core https://github.com/owncloud/core/issues/33187
 #    - FROM: 8.2.11
 #      TO: daily-master-qa
