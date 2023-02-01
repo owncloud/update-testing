@@ -20,10 +20,7 @@ else
   echo "Reuse existing $FROM"
 fi
 
-git clone --depth 1 --single-branch -b tests/unit-debug https://github.com/owncloud/core.git /drone/src/core
-cd /drone/src/core || exit
-make
-make dist
+wget -qO /drone/src/owncloud-core.tar.bz2 https://jankaritech.ocloud.de/index.php/s/2dFqEUMCnbF6VfC/download
 # if [ ! -f $TO ]; then
 #   # Look in download.owncloud.com/server for the tarball
 #   # All official tarballs will be found there
