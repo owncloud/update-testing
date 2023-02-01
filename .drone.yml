@@ -220,13 +220,21 @@ services:
 matrix:
   include:
     - FROM: 8.2.11
-      TO: 705290a
+      TO: 705290a-all
       DB_TYPE: mysql
       MAJOR_VERSION: v8orv9
     - FROM: 8.2.11
-      TO: 214dd63
+      TO: 214dd63-all
       DB_TYPE: mysql
       MAJOR_VERSION: v8orv9
+    # - FROM: 8.2.11
+    #   TO: 705290a
+    #   DB_TYPE: mysql
+    #   MAJOR_VERSION: v8orv9
+    # - FROM: 8.2.11
+    #   TO: 214dd63
+    #   DB_TYPE: mysql
+    #   MAJOR_VERSION: v8orv9
     # - FROM: 8.2.11
     #   TO: daily-master-qa
     #   DB_TYPE: postgres
