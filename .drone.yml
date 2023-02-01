@@ -166,7 +166,7 @@ pipeline:
       - cat version.php
       - ls | grep -v data | grep -v config | grep -v apps-external | xargs rm -rf
       # - tar -jxf /drone/src/owncloud-${TO}.tar.bz2 -C /drone/src
-      - tar -jxf /drone/src/owncloud-core.tar.bz2 -C /drone/src
+      - tar -jxf /drone/src/owncloud-${TO}.tar.bz2 -C /drone/src
       - cat version.php
       - php ./occ up
 
@@ -220,9 +220,17 @@ services:
 matrix:
   include:
     - FROM: 8.2.11
-      TO: daily-master-qa
+      TO: master
       DB_TYPE: mysql
       MAJOR_VERSION: v8orv9
+    - FROM: 8.2.11
+      TO: daily-local
+      DB_TYPE: mysql
+      MAJOR_VERSION: v8orv9
+    # - FROM: 8.2.11
+    #   TO: daily
+    #   DB_TYPE: mysql
+    #   MAJOR_VERSION: v8orv9
     # - FROM: 8.2.11
     #   TO: daily-master-qa
     #   DB_TYPE: postgres

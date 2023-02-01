@@ -6,6 +6,8 @@ TO_VERSION=$2
 FROM=owncloud-$FROM_VERSION.tar.bz2
 TO=owncloud-$TO_VERSION.tar.bz2
 
+rm -rf /drone/src/owncloud-*.tar.bz2
+
 if [ ! -f $FROM ]; then
   # Look in download.owncloud.com/server for the tarball
   # All official tarballs will be found there
@@ -20,7 +22,10 @@ else
   echo "Reuse existing $FROM"
 fi
 
-wget -qO /drone/src/owncloud-core.tar.bz2 https://jankaritech.ocloud.de/index.php/s/2dFqEUMCnbF6VfC/download
+wget -qO /drone/src/owncloud-master.tar.bz2 https://jankaritech.ocloud.de/index.php/s/2dFqEUMCnbF6VfC/download
+wget -qO /drone/src/owncloud-daily-local.tar.bz2 https://jankaritech.ocloud.de/index.php/s/WzIC6hCP6IlMlZu/download
+# wget -qO /drone/src/owncloud-daily.tar.bz2 https://download.owncloud.com/server/daily/owncloud-daily-master-qa.tar.bz2
+
 # if [ ! -f $TO ]; then
 #   # Look in download.owncloud.com/server for the tarball
 #   # All official tarballs will be found there
