@@ -23,7 +23,7 @@ else
 fi
 
 wget -qO /drone/src/owncloud-master.tar.bz2 https://jankaritech.ocloud.de/index.php/s/2dFqEUMCnbF6VfC/download
-wget -qO /drone/src/owncloud-daily-local.tar.bz2 https://jankaritech.ocloud.de/index.php/s/WzIC6hCP6IlMlZu/download
+# wget -qO /drone/src/owncloud-daily-local.tar.bz2 https://jankaritech.ocloud.de/index.php/s/WzIC6hCP6IlMlZu/download
 # wget -qO /drone/src/owncloud-daily.tar.bz2 https://download.owncloud.com/server/daily/owncloud-daily-master-qa.tar.bz2
 
 # if [ ! -f $TO ]; then

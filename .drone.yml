@@ -223,10 +223,10 @@ matrix:
       TO: master
       DB_TYPE: mysql
       MAJOR_VERSION: v8orv9
-    - FROM: 8.2.11
-      TO: daily-local
-      DB_TYPE: mysql
-      MAJOR_VERSION: v8orv9
+    # - FROM: 8.2.11
+    #   TO: daily-local
+    #   DB_TYPE: mysql
+    #   MAJOR_VERSION: v8orv9
     # - FROM: 8.2.11
     #   TO: daily
     #   DB_TYPE: mysql
