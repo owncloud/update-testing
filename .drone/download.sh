@@ -22,7 +22,12 @@ else
   echo "Reuse existing $FROM"
 fi
 
-wget -qO /drone/src/owncloud-master.tar.bz2 https://jankaritech.ocloud.de/index.php/s/2dFqEUMCnbF6VfC/download
+wget -qO /drone/src/owncloud-705290a.tar.bz2 https://jankaritech.ocloud.de/index.php/s/akkL82ne9CYK6X2/download\?path=/\&files=owncloud-705290a.tar.bz2
+wget -qO /drone/src/owncloud-214dd63.tar.bz2 https://jankaritech.ocloud.de/index.php/s/akkL82ne9CYK6X2/download\?path=/\&files=owncloud-214dd63.tar.bz2
+# wget -qO /drone/src/owncloud-997256c.tar.bz2 https://jankaritech.ocloud.de/index.php/s/akkL82ne9CYK6X2/download\?path=/\&files=owncloud-997256c.tar.bz2
+# wget -qO /drone/src/owncloud-03aad46.tar.bz2 https://jankaritech.ocloud.de/index.php/s/akkL82ne9CYK6X2/download\?path=/\&files=owncloud-03aad46.tar.bz2
+# wget -qO /drone/src/owncloud-3ff78c2.tar.bz2 https://jankaritech.ocloud.de/index.php/s/akkL82ne9CYK6X2/download\?path=/\&files=owncloud-3ff78c2.tar.bz2
+# wget -qO /drone/src/owncloud-master.tar.bz2 https://jankaritech.ocloud.de/index.php/s/2dFqEUMCnbF6VfC/download
 # wget -qO /drone/src/owncloud-daily-local.tar.bz2 https://jankaritech.ocloud.de/index.php/s/WzIC6hCP6IlMlZu/download
 # wget -qO /drone/src/owncloud-daily.tar.bz2 https://download.owncloud.com/server/daily/owncloud-daily-master-qa.tar.bz2
 
