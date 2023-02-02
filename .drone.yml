@@ -174,7 +174,7 @@ pipeline:
     image: logiqx/mysql-client
     pull: true
     commands:
-      - mysql -u owncloud -p"owncloud" -h mysql -P 3306 -D owncloud -e "use owncloud; show tables;"
+      - mysql -u owncloud -p"owncloud" -h mysql -P 3306 -D owncloud -e "use owncloud; show tables;select * from oc_users;"
 
   run-phpunit:
     image: owncloudci/php:7.4
