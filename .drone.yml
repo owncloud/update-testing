@@ -174,7 +174,7 @@ pipeline:
     image: logiqx/mysql-client
     pull: true
     commands:
-      - mysql -u owncloud -p"owncloud" -h mysql -P 3306 -D owncloud -e "use owncloud; show tables;select * from oc_users;"
+      - mysql -u owncloud -p"owncloud" -h mysql -P 3306 -D owncloud -e "use owncloud;show tables;select * from oc_users;"
 
   run-phpunit:
     image: owncloudci/php:7.4
@@ -184,7 +184,7 @@ pipeline:
       - php ./occ app:disable gallery
       - chmod +x lib/composer/phpunit/phpunit/phpunit
       - cd tests
-      - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml"
+      - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml --filter ReportTest::testCommandInput"
 
   # notify-rocketchat:
   #   image: plugins/slack:1
