@@ -170,6 +170,12 @@ pipeline:
       - cat version.php
       - php ./occ up
 
+  check-table:
+    image: owncloudci/php:7.4
+    pull: true
+    commands:
+      - mysql -u root -e "use owncloud; show tables;"
+
   run-phpunit:
     image: owncloudci/php:7.4
     pull: true
@@ -223,6 +229,10 @@ matrix:
       TO: debug
       DB_TYPE: mysql
       MAJOR_VERSION: v8orv9
+    - FROM: 10.0.10
+      TO: debug
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10-72
     # - FROM: 9.0.11
     #   TO: master
     #   DB_TYPE: mysql
