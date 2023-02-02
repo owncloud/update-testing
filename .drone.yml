@@ -174,7 +174,9 @@ pipeline:
     image: logiqx/mysql-client
     pull: true
     commands:
-      - mysql -u owncloud -p"owncloud" -h mysql -P 3306 -D owncloud -e "use owncloud;show tables;select * from oc_users;"
+      - mysql -u owncloud -p"owncloud" -h mysql -P 3306 -D owncloud -e "use owncloud;select * from oc_users;"
+      - mysql -u owncloud -p"owncloud" -h mysql -P 3306 -D owncloud -e "use owncloud;select * from oc_accounts;"
+      - mysql -u owncloud -p"owncloud" -h mysql -P 3306 -D owncloud -e "use owncloud;SELECT backend, count(*) as count FROM oc_accounts GROUP BY backend;"
 
   run-phpunit:
     image: owncloudci/php:7.4
