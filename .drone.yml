@@ -223,18 +223,62 @@ matrix:
       TO: master
       DB_TYPE: mysql
       MAJOR_VERSION: v8orv9
-    - FROM: 8.2.11
-      TO: 214dd63
+    - FROM: 9.0.11
+      TO: master
       DB_TYPE: mysql
       MAJOR_VERSION: v8orv9
-    # - FROM: 8.2.11
-    #   TO: 705290a
-    #   DB_TYPE: mysql
-    #   MAJOR_VERSION: v8orv9
-    # - FROM: 8.2.11
-    #   TO: 214dd63
-    #   DB_TYPE: mysql
-    #   MAJOR_VERSION: v8orv9
+    - FROM: 9.1.8
+      TO: master
+      DB_TYPE: mysql
+      MAJOR_VERSION: v8orv9
+    - FROM: 10.0.10
+      TO: master
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10-72
+    - FROM: 10.1.1
+      TO: master
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10-72
+    - FROM: 10.2.1
+      TO: master
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10-72
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.3.2
+      TO: master
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10-72
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.4.1
+      TO: master
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10-72
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.5.0
+      TO: master
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.6.0
+      TO: master
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.7.0
+      TO: master
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.8.0
+      TO: master
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
+    - FROM: 10.9.1
+      TO: master
+      DB_TYPE: mysql
+      MAJOR_VERSION: v10
+      EXTRA_APPS_PATHS_DIR: apps-external
     # - FROM: 8.2.11
     #   TO: daily-master-qa
     #   DB_TYPE: postgres
