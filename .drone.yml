@@ -228,11 +228,11 @@ services:
 matrix:
   include:
     - FROM: 8.2.11
-      TO: debug
+      TO: qa-core
       DB_TYPE: mysql
       MAJOR_VERSION: v8orv9
     - FROM: 10.0.10
-      TO: debug
+      TO: qa-core
       DB_TYPE: mysql
       MAJOR_VERSION: v10-72
     # - FROM: 9.0.11
