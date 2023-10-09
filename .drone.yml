@@ -23,6 +23,18 @@ pipeline:
       matrix:
         MAJOR_VERSION: v8orv9
 
+  owncloud-download-v9multi:
+    image: owncloudci/php:7.0
+    pull: true
+    commands:
+      - pwd
+      - rm -rf owncloud
+      - .drone/download.sh ${FROM} ${TO} ${VIA}
+      - tar -jxf owncloud-${FROM}.tar.bz2 -C /drone/src
+    when:
+      matrix:
+        MAJOR_VERSION: v9multi
+
   owncloud-download-v10-71:
     image: owncloudci/php:7.1
     pull: true
@@ -82,6 +94,30 @@ pipeline:
     when:
       matrix:
         MAJOR_VERSION: v8orv9
+
+  install-from-version-v9multi:
+    image: owncloudci/php:7.0
+    pull: true
+    environment:
+      - DB_TYPE=${DB_TYPE}
+    commands:
+      - cd owncloud
+      - ../.drone/install-server.sh
+      - more config/config.php
+      - php -f cron.php
+      - php -f cron.php
+      - php ./occ app:disable activity
+      - php ./occ app:disable files_pdfviewer
+      - php ./occ app:disable files_texteditor
+      - php ./occ app:disable gallery
+      - php ./occ app:disable files_videoplayer
+      - php ./occ app:disable files_videoviewer
+      - php ./occ app:disable updater
+      - php ./occ app:disable templateeditor
+      - php ./occ app:disable notifications
+    when:
+      matrix:
+        MAJOR_VERSION: v9multi
 
   install-from-version-v10-71:
     image: owncloudci/php:7.1
@@ -158,6 +194,22 @@ pipeline:
       matrix:
         MAJOR_VERSION: v10
 
+  upgrade-via:
+    image: owncloudci/php:7.0
+    pull: true
+    commands:
+      - cd owncloud
+      - cat version.php
+      - ls | grep -v data | grep -v config | grep -v apps-external | xargs rm -rf
+      - tar -jxf /drone/src/owncloud-${VIA}.tar.bz2 -C /drone/src
+      - cat version.php
+      - php ./occ up
+      - php -f cron.php
+      - php -f cron.php
+    when:
+      matrix:
+        MAJOR_VERSION: v9multi
+
   upgrade-test:
     image: owncloudci/php:7.4
     pull: true
@@ -231,13 +283,15 @@ matrix:
       DB_TYPE: oracle
       MAJOR_VERSION: v8orv9
     - FROM: 9.0.11
+      VIA: 9.1.8
       TO: daily-master-qa
       DB_TYPE: mysql
-      MAJOR_VERSION: v8orv9
+      MAJOR_VERSION: v9multi
     - FROM: 9.0.11
+      VIA: 9.1.8
       TO: daily-master-qa
       DB_TYPE: postgres
-      MAJOR_VERSION: v8orv9
+      MAJOR_VERSION: v9multi
     - FROM: 9.0.11
       TO: daily-master-qa
       DB_TYPE: oracle
