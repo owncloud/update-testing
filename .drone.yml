@@ -231,15 +231,6 @@ pipeline:
       - cd tests
       - ../lib/composer/phpunit/phpunit/phpunit --configuration phpunit-autotest.xml --log-junit "autotest-results-$DATABASE.xml"
 
-  notify-rocketchat:
-    image: plugins/slack:1
-    pull: true
-    secrets: [ slack_webhook ]
-    channel: builds
-    when:
-      local: false
-      status: [ changed, failure ]
-
 services:
   mysql:
     image: ${MYSQL_IMAGE=mysql:5.5}
